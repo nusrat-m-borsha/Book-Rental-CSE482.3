@@ -1,0 +1,15 @@
+/**********Single Book Page Overall Layout*********/
+
+@media only screen and (max-width: 765px) {
+     .single-book-img img,
+     .cart-button{
+         width: 60%;
+         margin-left: 20%;
+     }
+
+     .single-book-img img{
+        height: 10rem;
+     }
+
+
+  }
