@@ -1,6 +1,10 @@
-/**********Single Book Page Overall Layout*********/
+
 
 @media only screen and (max-width: 765px) {
+
+    /***********************************/
+    /******Single book page*************/
+    /***********************************/
      .single-book-img img,
      .cart-button{
          width: 60%;
@@ -11,5 +15,47 @@
         height: 10rem;
      }
 
+    /*******************************/
+    /******Payment page*************/
+    /*******************************/
 
+     .cash-pay-button{
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        width:30%;
+        height:2rem;
+        margin-left: 35%;
+        background-color: #bdbdbd;
+        border-radius: 0.4rem;
+    }
+
+  }
+
+  @media only screen and (max-width: 480px) {
+
+    /*******************************/
+    /******Payment page*************/
+    /*******************************/
+    .payment-info-table {
+        width:60%;
+        margin-left: 5%;
+        margin-top: 4rem;
+     }
+
+     .cash-pay-button{
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        width:10rem;
+        height:2rem;
+        background-color: #bdbdbd;
+        border-radius: 0.4rem;
+    }
+
+    .bkash-button{
+        background-color: #ee584d;
+        width:16rem;
+        height:2rem;
+        border-radius: 0.4rem;
+        margin-left: 7.5rem;
+    }
   }

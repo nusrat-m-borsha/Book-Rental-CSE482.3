@@ -3,20 +3,31 @@
     margin: 0px;
 }
 
+/*******************************/
+/******Single Book page*********/
+/*******************************/
+
+
+/*********navbar***********/
 .navbar{
     background-color: #2d096b;
 }
 
 .navbar a:hover{
     border-bottom:1px solid #5fdb8f;
-    overflow: hidden;
 }
 
-
 .nav-item,
-.nav-logo{
+.nav-logo a{
     padding: 1rem;
     color: #fff;
+}
+
+.nav-logo a:hover,
+.nav-logo a:link{
+    text-decoration: none;
+    color: #fff;
+    border-bottom: hidden;
 }
 
 .nav-logo{
@@ -26,12 +37,14 @@
 .cart-button a{
     color: #fff;
 }
+/****************end of navbar styling******************/
 
 .single-book-img img{
     width: 20rem;
     height: 15rem;
     margin: 2rem;
 }
+
 
 .cart-button{
      background-color: #ee584d;
@@ -58,3 +71,43 @@
     color: #fff !important;
 }
 
+/*******************************/
+/******Payment page*************/
+/*******************************/
+
+.payment-section{
+    overflow: hidden;
+}
+.cart-heading{
+   text-align: center;
+    color: #ee584d;
+}
+
+.payment-info-table {
+    width:60%;
+    margin-left: 20%;
+    margin-top: 4rem;
+}
+
+.payment-info-table  td, th{
+    padding: 1.5rem ;
+    border-bottom: 1px solid #bdbdbd;
+}
+
+.cash-pay-button{
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    width:20%;
+    margin-left: 40%;
+    background-color: #bdbdbd;
+    text-align: center;
+    border-radius: 0.4rem;
+}
+
+.bkash-button{
+    background-color: #ee584d;
+    width:30%;
+    margin-left: 35%;
+    text-align: center;
+    border-radius: 0.4rem;
+}
