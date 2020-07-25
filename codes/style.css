@@ -1,0 +1,168 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+/*******************************/
+/******Single Book page*********/
+/*******************************/
+
+
+/*********navbar***********/
+.navbar{
+    background-color: #2d096b;
+    margin-bottom: 20px;
+}
+
+.navbar a:hover{
+    border-bottom:1px solid #5fdb8f;
+}
+
+.nav-item,
+.nav-logo a{
+    padding: 1rem;
+    color: #fff;
+}
+
+.nav-logo a:hover,
+.nav-logo a:link{
+    text-decoration: none;
+    color: #fff;
+    border-bottom: hidden;
+}
+
+.nav-logo{
+    font-family: Pacifico;
+}
+.nav-item a,
+.cart-button a{
+    color: #fff;
+}
+/****************end of navbar styling******************/
+
+
+
+
+.book-info h3,h5 {
+      margin: 2rem;
+}
+
+.book-info h5,h6{
+    border-bottom: 1px solid #bdbdbd;
+    color: #2d096b;
+}
+
+.book-info h6{
+    margin-left: 3rem;
+    padding: 1rem;
+}
+
+
+
+/*******************************/
+/******User options*************/
+/*******************************/
+
+.user-section{
+    overflow: hidden;
+}
+.user-heading{
+   text-align: center;
+    color: #ee584d;
+    margin-bottom: 20px;
+}
+
+.dashboard-table {
+    width:80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4rem;
+}
+
+.dashboard-table  td, th{
+    padding: 10px;
+    border-bottom: 1px solid #bdbdbd;
+}
+
+.dashboard-table  th{
+    width: 80%;
+}
+
+
+.home-button{
+    background-color: #ee584d;
+    width:20%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-radius: 0.4rem;
+    margin-bottom: 10px;
+}
+
+
+/* FEEDBACK */
+
+.feedback {
+    width: 100%;
+    border: 2px solid #5fdb8f;
+    border-radius: 0.4rem;
+    margin: 20px;
+}
+
+.submit-button{
+    background-color: #ee584d;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-radius: 0.4rem;
+    margin-bottom: 10px;
+}
+
+
+
+/* FOOTER */
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.panel-footer-2 {
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #2d096b;
+  color: #fff;
+  width: 100%;
+}
+
+#hours, #address, #social p {
+  color: #fff;
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+#hours > span, #address > span, #social > span {
+  font-size: 1.3em;
+}
+
+.fa {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  font-size: 1.5em;
+}
+
+.fa:hover {
+    color: #29CDB7;
+}
+
+.fa-facebook {
+  color: white;
+}
+
+.fa-instagram {
+  color: white;
+}
+
