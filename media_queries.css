@@ -31,7 +31,7 @@
 
   }
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 490px) {
 
     /*******************************/
     /******Payment page*************/
@@ -53,9 +53,8 @@
 
     .bkash-button{
         background-color: #ee584d;
-        width:16rem;
+        width:10rem;
         height:2rem;
         border-radius: 0.4rem;
-        margin-left: 7.5rem;
     }
   }
