@@ -14,8 +14,13 @@
     margin-bottom: 20px;
 }
 
-.navbar a:hover{
-    border-bottom:1px solid #5fdb8f;
+.navbar-nav a{
+    border-bottom: 1px solid transparent;
+}
+
+.navbar-nav a:hover,
+.navbar-nav a:active{
+    border-bottom: 1px solid #5fdb8f;
 }
 
 .nav-item,
