@@ -13,13 +13,13 @@
     background-color: #2d096b;
 }
 
-.navbar a{
-    padding: 0.5rem;
+.navbar-nav a{
+    border-bottom: 1px solid transparent;
 }
 
-.navbar a:hover{
+.navbar-nav a:hover,
+.navbar-nav a:active{
     border-bottom: 1px solid #5fdb8f;
-    padding: 0.5rem;
 }
 
 .nav-item,
