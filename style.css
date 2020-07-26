@@ -117,6 +117,11 @@
     padding: 0.2rem;
 }
 
+.back-button a{
+    
+    color: #fff;
+}
+
 .add-book-form{
      margin-top: 2rem;
 }
@@ -147,6 +152,7 @@
     margin-top: 1rem;
     border: 1px solid #ee584d;
     color: #fff;
+    margin-bottom: 3rem;
 }
 
 
