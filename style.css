@@ -135,9 +135,14 @@
     border: 1px solid rgb(83, 80, 80);
 }
 
+.add-book-form textarea{
+       height:200px
+}
+
 .add-book-form input[type="file"]{
     padding: 0.2rem;
     margin: 1rem;
+    cursor: pointer;
 }
 
 .add-book-form label{
