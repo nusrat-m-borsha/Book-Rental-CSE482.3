@@ -43,6 +43,7 @@
 .cart-button a{
     color: #fff;
 }
+
 /****************end of navbar styling******************/
 
 
@@ -101,6 +102,51 @@
     text-align: center;
     border-radius: 0.4rem;
     margin-bottom: 10px;
+}
+
+
+/*******************************/
+/******Add books page*************/
+/*******************************/
+
+.back-button button{
+    background-color: #ee584d;
+    border: 1px solid #ee584d;
+    border-radius: 0.4rem;
+    color: #fff;
+    padding: 0.2rem;
+}
+
+.add-book-form{
+     margin-top: 2rem;
+}
+
+.add-book-form input[type="text"],
+.add-book-form textarea{
+    border-radius: 0.6rem;
+    padding: 0.2rem;
+    margin: 1rem;
+    width: 100%;
+    border: 1px solid rgb(83, 80, 80);
+}
+
+.add-book-form input[type="file"]{
+    padding: 0.2rem;
+    margin: 1rem;
+}
+
+.add-book-form label{
+    padding: 0.2rem;
+    margin: 1rem;
+}
+
+.add-book-form input[type="submit"]{
+    background-color: #ee584d;
+    width: 100%;
+    border-radius: 0.4rem;
+    margin-top: 1rem;
+    border: 1px solid #ee584d;
+    color: #fff;
 }
 
 
