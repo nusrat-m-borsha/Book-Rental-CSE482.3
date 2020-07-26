@@ -118,6 +118,24 @@
     border-radius: 0.4rem;
 }
 
+
+/*******************************/
+/******About page*********/
+/*******************************/
+
+.about-section{
+    height: 30rem;
+}
+
+.about-section h3,h5,p{
+    text-align: center;
+    margin: 3rem;
+}
+
+.about-section h5{
+    border-bottom: 1px solid #bdbdbd;
+}
+
 /* FOOTER */
 
 .container {
@@ -163,4 +181,3 @@
 .fa-instagram {
   color: white;
 }
-
