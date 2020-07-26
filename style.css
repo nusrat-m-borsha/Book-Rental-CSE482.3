@@ -20,8 +20,13 @@ body {
     position: relative;
 }
 
-.navbar a:hover{
-    border-bottom:1px solid #5fdb8f;
+.navbar-nav a{
+    border-bottom: 1px solid transparent;
+}
+
+.navbar-nav a:hover,
+.navbar-nav a:active{
+    border-bottom: 1px solid #5fdb8f;
 }
 
 .nav-item,
@@ -44,6 +49,7 @@ body {
 .cart-button a{
     color: #fff;
 }
+
 /****************end of navbar styling******************/
 
 
@@ -172,6 +178,62 @@ hr {
   }
 }
 
+
+
+/*******************************/
+/******Add books page*************/
+/*******************************/
+
+.back-button button{
+    background-color: #ee584d;
+    border: 1px solid #ee584d;
+    border-radius: 0.4rem;
+    color: #fff;
+    padding: 0.2rem;
+}
+
+.back-button a{
+    
+    color: #fff;
+}
+
+.add-book-form{
+     margin-top: 2rem;
+}
+
+.add-book-form input[type="text"],
+.add-book-form textarea{
+    border-radius: 0.6rem;
+    padding: 0.2rem;
+    margin: 1rem;
+    width: 100%;
+    border: 1px solid rgb(83, 80, 80);
+}
+
+.add-book-form textarea{
+       height:200px
+}
+
+.add-book-form input[type="file"]{
+    padding: 0.2rem;
+    margin: 1rem;
+    cursor: pointer;
+}
+
+.add-book-form label{
+    padding: 0.2rem;
+    margin: 1rem;
+}
+
+.add-book-form input[type="submit"]{
+    background-color: #ee584d;
+    width: 100%;
+    border-radius: 0.4rem;
+    margin-top: 1rem;
+    border: 1px solid #ee584d;
+    color: #fff;
+    margin-bottom: 3rem;
+}
 
 
 /* FEEDBACK */
