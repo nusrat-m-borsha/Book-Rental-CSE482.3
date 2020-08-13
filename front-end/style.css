@@ -1,0 +1,241 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+/*******************************/
+/******Single Book page*********/
+/*******************************/
+
+
+/*********navbar***********/
+.navbar{
+    background-color: #2d096b;
+}
+
+.navbar-nav a{
+    border-bottom: 1px solid transparent;
+}
+
+.navbar-nav a:hover,
+.navbar-nav a:active{
+    border-bottom: 1px solid #5fdb8f;
+}
+
+.nav-item,
+.nav-logo a{
+    padding: 1rem;
+    color: #fff;
+}
+
+.nav-logo a:hover,
+.nav-logo a:link{
+    text-decoration: none;
+    color: #fff;
+    border-bottom: hidden;
+}
+
+.nav-logo{
+    font-family: Pacifico;
+}
+.nav-item a,
+.cart-button a{
+    color: #fff;
+}
+/****************end of navbar styling******************/
+
+.single-book-img img{
+    width: 20rem;
+    height: 15rem;
+    margin: 2rem;
+}
+
+
+.cart-button{
+     background-color: #ee584d;
+     text-align: center;
+     width: 20rem;
+     margin: 1rem 2rem 2rem 2rem;
+     color: #fff;
+}
+
+.book-info h3,h5,p{
+      margin: 2rem;
+}
+
+.book-info h5,h6{
+    border-bottom: 1px solid #bdbdbd;
+    color: #2d096b;
+}
+
+.book-info h6{
+    margin-left: 3rem;
+    padding: 1rem;
+}
+
+.fa{
+    color: #fff !important;
+}
+
+/*******************************/
+/******Payment page*************/
+/*******************************/
+
+.payment-section{
+    overflow: hidden;
+}
+.cart-heading{
+   text-align: center;
+    color: #ee584d;
+}
+
+.payment-info-table {
+    width:60%;
+    margin-left: 20%;
+    margin-top: 4rem;
+}
+
+.payment-info-table  td, th{
+    padding: 1.5rem ;
+    border-bottom: 1px solid #bdbdbd;
+}
+
+.cash-pay-button{
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    width:20%;
+    margin-left: 40%;
+    background-color: #bdbdbd;
+    text-align: center;
+    border-radius: 0.4rem;
+}
+
+.bkash-button{
+    background-color: #ee584d;
+    width:30%;
+    margin-left: 35%;
+    text-align: center;
+    border-radius: 0.4rem;
+}
+
+
+/*******************************/
+/******About page*********/
+/*******************************/
+
+.about-section{
+    height: 30rem;
+}
+
+.about-section h3,h5,p{
+    text-align: center;
+    margin: 3rem;
+}
+
+.about-section h5{
+    border-bottom: 1px solid #bdbdbd;
+}
+
+/*******************************/
+/******Book genre list page*********/
+/*******************************/
+.search-container input[type="text"]{
+    width:70%;
+    margin: 3rem 0rem 3rem 3rem;
+    border: 1px solid rgb(66, 66, 66);
+    border-radius: 1rem;
+    text-indent: 1rem;
+}
+
+.search-container button{
+    width:20%;
+    height:1.5rem;
+    float:right;
+    margin: 3rem 0rem 0rem 0rem;
+    border-radius: 1rem;
+    background-color: #ee584d;
+    border: none;
+    color: #fff;
+    text-align: center;
+    padding: 0px;
+}
+
+.genre-heading-font{
+    border-bottom: 1px solid #bdbdbd;
+    color: rgb(94, 92, 92);
+}
+
+.genre-list-table table{
+    width: 100%;
+    margin: 1rem 0rem 1rem 0rem;
+    border: 1px solid rgb(107, 107, 107);
+    border-radius: 1rem;
+}
+
+.genre-list-table tr{
+    padding: 2rem;
+}
+
+.genre-list-table td{
+    padding: 0.6rem;
+    color:#000;
+    border-bottom: 1px solid rgb(102, 102, 102);
+}
+
+.genre-list-table a{
+    text-decoration: none;
+    color: #000;
+}
+
+.genre-list-table a:hover,
+.genre-list-table a:link{
+    text-decoration: none;
+    color: #4dc0ee;
+}
+
+
+/* FOOTER */
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.panel-footer-2 {
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #2d096b;
+  color: #fff;
+  width: 100%;
+}
+
+#hours, #address, #social p {
+  color: #fff;
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+#hours > span, #address > span, #social > span {
+  font-size: 1.3em;
+}
+
+.fa {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  font-size: 1.5em;
+}
+
+.fa:hover {
+    color: #29CDB7;
+}
+
+.fa-facebook {
+  color: white;
+}
+
+.fa-instagram {
+  color: white;
+}
