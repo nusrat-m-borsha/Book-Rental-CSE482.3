@@ -1,5 +1,4 @@
-<?php require_once("../resources/config.php"); ?>
-
+<?php require_once("../resources/config.php");?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,7 +58,7 @@
 
                           while($row = mysqli_fetch_array($send_query)){
                             
-                            echo "<img src={$row['book_image']}>";
+                            echo "<img src=\"data:image/jpg;based64{$row['book_image']}\">";
                           
                         
                    echo "</div>";
@@ -82,9 +81,10 @@
                             echo "<h3>Book Description</h3>";
                             echo "<p>Description {$row['book_description']}</p>";
                             echo "<h5>Book Details</h5>";
-                            echo "<h6>ISBN {$row['ISBN']}</h6>";
-                            echo "<h6>Author {$row['author']}</h6>";
-                            echo "<h6>Price {$row['book_price']}</h6>";
+                            echo "<h6>Title: &nbsp &nbsp{$row['book_title']}</h6>";
+                            echo "<h6>ISBN:   &nbsp &nbsp{$row['ISBN']}</h6>";
+                            echo "<h6>Author:   &nbsp &nbsp{$row['author']}</h6>";
+                            echo "<h6>Price:   &nbsp &nbspTK.{$row['book_price']}</h6>";
                           }
                           ?>
                   </div>

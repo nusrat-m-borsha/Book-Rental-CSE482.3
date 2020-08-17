@@ -45,22 +45,7 @@
             </div>
         </nav>
     </header>
-      <!----------------------------------Search box----------------------------------->
-      <div class="container">
-          <div class="row">
-              <div class="col-md-1"></div>
-              <div class="col-xs-12 col-sm-12 col-md-10 ">
-                <div class="search-container">
-                    <form action="">
-                      <input type="text" placeholder="Search.." name="search">
-                      <button type="submit" class="btn btn-default">Search</button>
-                    </form>
-                  </div>
-              </div>
-              <div class="col-md-1"></div>
-          </div>
-      </div>
-
+    <br><br><br>
       <!----------------------------------Genre Heading----------------------------------->
       <section>
           <div class="container">

@@ -1,4 +1,8 @@
-<?php require_once("../resources/config.php"); ?>
+<?php
+  include "../reources/config.php";  
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,19 +13,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/media_queries.css">
+    <link rel="stylesheet" href="style1.css">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <title>Book Rental</title>
 </head>
 <body>
-    <!----------------------------------Navbar----------------------------------->
-    <header>
+     <!----------------------------------Navbar----------------------------------->
+     <header>
         <nav class="navbar navbar-expand-sm">
             <!-- Brand/logo -->
             <div class="nav-logo">
             <a class="navbar-brand" href="#">Book Rental</a>
-           </div>
+            </div>
             <!-- Links -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
               <span class="navbar-toggler-icon"><i class="fa fa-bars"></i>
@@ -30,13 +33,13 @@
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <a class="nav-link" href="#">Browse Books</a>
+                <a class="nav-link" href="book_genre_list.html">Browse Books</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Sign up</a>
+                <a class="nav-link" href="signup.html">Sign up</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
+                <a class="nav-link" href="login.html">Login</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="payment.html">My Cart</a>
@@ -45,56 +48,79 @@
             </div>
         </nav>
     </header>
-    <br><br><br>
 
-      <!----------------------------------Genre Heading----------------------------------->
-      <section>
-          <div class="container">
-              <div class="row">
-                 <div class="col-md-1"></div>
-                 <div class="col-xs-12 col-sm-12 col-md-10">
-                 <?php
-                          $query = "SELECT * FROM Genre WHERE genre_id = ". escape_string($_GET["id"]) ." ";
-                          $send_query = mysqli_query($connection, $query);
-                          
-                             while($row = mysqli_fetch_array($send_query)){
-                          
-                           echo "<h4 class=\"genre-heading-font\">{$row['genre_title']}</h4";
-                             }
-                  ?>
-                 </div>
-                 <div class="col-md-1"></div>
-              </div>
-          </div>
-      </section>
-
-      <!----------------------------------Genre List Table----------------------------------->
-      <section>
+    <section>
         <div class="container">
             <div class="row">
-               <div class="col-md-1"></div>
-               <div class="col-xs-12 col-sm-12 col-md-10">
-                  <div class="genre-list-table">
-                      <table>
-                        <?php
-                           $query = "SELECT * FROM book WHERE genre_id = ". escape_string($_GET["id"]) ." ";
-                           $send_query = mysqli_query($connection, $query);
-                    
-                           while($row = mysqli_fetch_array($send_query)){
-                            
-                            echo "<tr><td><a href='single_book.php?id={$row['book_id']}'>{$row['book_title']}</a></td></tr>";
-                           }
-                          ?>
-                     
-                      </table>
-                  </div>
-               </div>
-               <div class="col-md-1"></div>
+              <div class="col-md-2 col-xs-12 col-sm-12 back-button">
+                  <button> <a href="user.html">Go Back</a></button>
+              </div>
+              <div class="col-md-10"></div>
             </div>
-        </div>
+           </div>
     </section>
 
-    <!----------------------------------Footer----------------------------------->
+     <!----------------------------------Book Collection----------------------------------->
+
+
+<?php
+    $sql = "SELECT id, book_image, book_title, genre_id, book_price, author, ISBN FROM addbook";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0) {
+?>
+
+<section class="user-section">
+        <!----------------------------------Page Heading----------------------------------->
+      <div class="row">
+          <div class="col-sm-12 col-xl-12 col-lg-12 col-md-12">
+             <div class="user-heading">
+               <h1>Your Book Collection</h1>
+             </div>
+          </div>
+      </div>
+
+      <div class="container text-center">
+        <table border="2" align="center" class="table1">
+
+        <tr>
+
+        <th class="text-center pad"> Title </th>
+        <th class="text-center pad"> Genre </th>
+        <th class="text-center pad"> Price </th>
+        <th class="text-center pad"> Author </th>
+        <th class="text-center pad"> ISBN </th>
+        <th class="text-center pad"> Delete </th>
+        </tr>
+
+        <?php while($row = mysqli_fetch_assoc($result))
+        {
+        ?>
+        <tr>
+
+        <td class="text-center pad"><?php echo $row["book_title"];?> </td>
+        <td class="text-center pad"><?php echo $row["genre_id"];?> </td>
+        <td class="text-center pad"><?php echo $row["book_price"];?> </td>
+        <td class="text-center pad"><?php echo $row["author"];?> </td>
+        <td class="text-center pad"><?php echo $row["ISBN"];?> </td>
+        <td class="text-center pad"> <a href="deletebooks_process.php?id=<?php echo $row["id"]; ?>">Delete</a> </button></td>
+        </tr>
+        <?php
+        }
+        }
+        else
+        echo "<center>No books found in your collection </center>" ;
+        ?>
+        </table>
+    </div>
+  
+
+  </section>
+
+
+    
+
+
+     <!----------------------------------Footer----------------------------------->
         
 <footer class="panel-footer-2 text-center">
     <div class="container">
@@ -120,5 +146,7 @@
       <div class="text-center">&copy; Book Rental System 2020</div>
     </div>
   </footer>
+
+
 </body>
 </html>

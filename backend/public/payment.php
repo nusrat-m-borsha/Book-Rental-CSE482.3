@@ -1,5 +1,9 @@
 <?php require_once("../resources/config.php"); ?>
 
+<?php
+
+//echo $_SESSION['total_price'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,25 +64,103 @@
        <div class="row">
         <div class="col-xl-12 col-md-12 col-sm-12">
         <table class="payment-info-table">
+
+           <?php
+
+                if(isset($_GET['add'])){
+                $query = "SELECT * FROM book WHERE book_id=". escape_string($_GET["add"]) ." ";
+                $send_query = mysqli_query($connection, $query);
+
+                while($row = mysqli_fetch_array($send_query)){
+                  
+                    if($row['book_quantity']!= $_SESSION['book_'. $_GET['add']]){
+
+                      $_SESSION['book_'. $_GET['add'] ]+=1;
+                    }
+                    else{
+                     
+                    }
+                }}
+
+                /*if(isset($_GET['remove'])){
+                  $_SESSION['book_'.$_GET['remove']]--;
+                  if( $_SESSION['book_'.$_GET['remove']]<1){
+                          redirect("payment.php");
+                  }
+                  else{
+                    redirect("payment.php");
+                  }
+                }*/
+    
+                if(isset($_GET['delete'])){
+                  $_SESSION['book_'.$_GET['delete']]='0';
+                  unset($_SESSION['total_price']);
+                  unset($_SESSION['quantity']);
+                  redirect("payment.php");
+                }
+
+                function cart(){
+                  $quantity =0;
+                  foreach($_SESSION as $name => $value){
+                  $total = 0;
+                  if($value>0){
+                  if(substr($name,0,5)== "book_"){
+
+                  $length = strlen((int)$name - 5);
+                  $id = substr($name, 5, $length);
+                  $quantity += (int)$value;
+                  global $connection;
+                  $query = "SELECT * FROM book WHERE book_id=".escape_string($id). " ";
+                  $send_query = mysqli_query($connection, $query);
+  
+                  while($row = mysqli_fetch_array($send_query)){
+                   
+                   $sub_total =((int)$row['book_price']*(int)$value);
+                   $quantity += $quantity;
+                   echo "<tr>";
+                   echo "<td>{$row['book_title']}</td>";
+                   echo "<td>{$row['book_price']}</td>";
+                   echo "<td>{$value}</td>";
+                   echo "<td><a href=\"payment.php?delete={$row['book_id']}\">Remove</a></td>";
+                   echo "</tr>";
+
+                   $total +=$sub_total;
+                  
+                  }
+
+                  $_SESSION['total_price']=(int)($total +=$sub_total);
+                  $_SESSION['quantity']=(int)$value;
+                }
+              }
+            }
+          }
+           ?>
             <tr>
                 <th>Item</th>
                 <th>Price</th>
                 <th>Quantity</th>
-                <th>Total</th>
+               
             </tr>
-            <tr>
-                <td>Lorem ipsum dolor sit amet.</td>
-                <td>1</td>
-                <td>Tk. 20</td>
-                <td>Tk. 20</td>
-            </tr>
+           <?php cart(); ?>
             <tr>
                 <td colspan="3">Delivery cost</td>
                 <td>50</td>
             </tr>
+            <tr>
+                <td colspan="3">Total cost</td>
+                <td>
+                  <?php
+
+                  echo isset($_SESSION['total_price']) ? $_SESSION['total_price'] : $_SESSION['total_price']="0";
+                  ?>
+                </td>
+            </tr>
         </table>
     </div>
     </div>
+
+
+
      <!----------------------------------Payment Buttons----------------------------------->
           <div class="cash-pay-button">
             <a class="btn btn-default" href="#" role="button">Cash On Delivery</a>
