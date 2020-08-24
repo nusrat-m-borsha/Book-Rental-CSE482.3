@@ -16,6 +16,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/media_queries.css">
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script id = "myScript" src="https://scripts.sandbox.bka.sh/versions/1.2.0-beta/checkout/bKash-checkout-sandbox.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <title>Book Rental</title>
 </head>
@@ -196,5 +198,114 @@
     <div class="text-center">&copy; Book Rental System 2020</div>
   </div>
 </footer>
+
+<!-----------------------Bkash-------------------->
+
+<script type="text/javascript">
+ 
+    var accessToken='';
+    $(document).ready(function(){
+        $.ajax({
+            url: "token.php",
+            type: 'POST',
+            contentType: 'application/json',
+            success: function (data) {
+                console.log('got data from token  ..');
+				console.log(JSON.stringify(data));
+				
+                accessToken=JSON.stringify(data);
+            },
+			error: function(){
+						console.log('error');
+                        
+            }
+        });
+
+        var paymentConfig={
+            createCheckoutURL:"createpayment.php",
+            executeCheckoutURL:"executepayment.php",
+        };
+
+		
+        var paymentRequest;
+        paymentRequest = { amount:'105',intent:'sale'};
+		console.log(JSON.stringify(paymentRequest));
+
+        bKash.init({
+            paymentMode: 'checkout',
+            paymentRequest: paymentRequest,
+            createRequest: function(request){
+                console.log('=> createRequest (request) :: ');
+                console.log(request);
+                
+                $.ajax({
+                    url: paymentConfig.createCheckoutURL+"?amount="+paymentRequest.amount,
+                    type:'GET',
+                    contentType: 'application/json',
+                    success: function(data) {
+                        console.log('got data from create  ..');
+                        console.log('data ::=>');
+                        console.log(JSON.stringify(data));
+                        
+                        var obj = JSON.parse(data);
+                        
+                        if(data && obj.paymentID != null){
+                            paymentID = obj.paymentID;
+                            bKash.create().onSuccess(obj);
+                        }
+                        else {
+							console.log('error');
+                            bKash.create().onError();
+                        }
+                    },
+                    error: function(){
+						console.log('error');
+                        bKash.create().onError();
+                    }
+                });
+            },
+            
+            executeRequestOnAuthorization: function(){
+                console.log('=> executeRequestOnAuthorization');
+                $.ajax({
+                    url: paymentConfig.executeCheckoutURL+"?paymentID="+paymentID,
+                    type: 'GET',
+                    contentType:'application/json',
+                    success: function(data){
+                        console.log('got data from execute  ..');
+                        console.log('data ::=>');
+                        console.log(JSON.stringify(data));
+                        
+                        data = JSON.parse(data);
+                        if(data && data.paymentID != null){
+                            alert('[SUCCESS] data : ' + JSON.stringify(data));
+                            window.location.href = "success.html";                              
+                        }
+                        else {
+                            bKash.execute().onError();
+                        }
+                    },
+                    error: function(){
+                        bKash.execute().onError();
+                    }
+                });
+            }
+        });
+        
+		console.log("Right after init ");
+    
+        
+    });
+	
+	function callReconfigure(val){
+        bKash.reconfigure(val);
+    }
+
+    function clickPayButton(){
+        $("#bKash_button").trigger('click');
+    }
+
+
+</script>
 </body>
 </html>
