@@ -1,4 +1,7 @@
 <?php require_once("../resources/config.php"); 
+if(!isset($_SESSION['username'])){
+    header('location: login.php');
+}
     include_once('header.php');
 //echo $_SESSION['total_price'];
 ?>
@@ -19,16 +22,15 @@
                         <th>Item</th>
                         <th>Price</th>
                         <th>Quantity</th>
-                    
                         </tr>
 
            <?php
  
                 if(isset($_GET['add'])){
                     {
-                       if(isset($_COOKIE["shopping_cart"]))
+                       if(isset($_COOKIE[$_SESSION['username']]))
                         {
-                         $cookie_data = stripslashes($_COOKIE['shopping_cart']);
+                         $cookie_data = stripslashes($_COOKIE[$_SESSION['username']]);
                        
                          $cart_data = json_decode($cookie_data, true);
                         }
@@ -66,8 +68,8 @@
                                 $cart_data[] = $book_array;
                             }
                     $book_data = json_encode($cart_data);
-                    //$params = session_get_cookie_params();
-                    setcookie('shopping_cart', $book_data, time() + (86400 * 30));
+    
+                    setcookie($_SESSION['username'], $book_data, time() + (86400 * 30));
                     header("location:cart.php?success=1");
                   
                     
@@ -75,10 +77,10 @@
             }
     
                
-                if(isset($_COOKIE['shopping_cart'])){
+                if(isset($_COOKIE[$_SESSION['username']])){
 
                     $total = 0;
-                    $cookie_data = stripslashes($_COOKIE['shopping_cart']);
+                    $cookie_data = stripslashes($_COOKIE[$_SESSION['username']]);
                     $cart_data = json_decode($cookie_data, true);
                     foreach($cart_data as $keys => $values){
                   ?>
@@ -97,7 +99,7 @@
                 <?php
                  if(isset($_GET['delete'])){
 
-                    $cookie_data = stripslashes($_COOKIE['shopping_cart']);
+                    $cookie_data = stripslashes($_COOKIE[$_SESSION['username']]);
                     $cart_data = json_decode($cookie_data, true);
                     foreach($cart_data as $keys => $values)
                     {
@@ -106,7 +108,7 @@
                       $total -= $cart_data[$keys]['book_price'];
                       unset($cart_data[$keys]);
                       $item_data = json_encode($cart_data);
-                      setcookie("shopping_cart", $item_data, time() + (86400 * 30));
+                      setcookie($_SESSION['username'], $item_data, time() + (86400 * 30));
                       header("location:cart.php?remove=1");
                      }
 
@@ -114,7 +116,9 @@
                   }
    
             
-            }}} ?>
+            }
+            
+            }} ?>
            
            
             <tr>

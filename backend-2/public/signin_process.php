@@ -58,7 +58,7 @@
             // log user in
             $_SESSION['username'] = $username;
             $_SESSION['success'] = "You are now logged in";
-            header('location: login.php'); // redirect to home page
+            header('location: book_genre_list.php'); // redirect to home page
         }else{
             array_push($errors, "wrong username/password combination");
         }

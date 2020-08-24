@@ -56,7 +56,7 @@
                ?>
               
               <li class="nav-item">
-                <a class="nav-link" href="payment.php">My Cart</a>
+                <a class="nav-link" href="cart.php">My Cart</a>
               </li>
             </ul>
             </div>

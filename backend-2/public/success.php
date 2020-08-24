@@ -53,7 +53,7 @@ if($code == 200 && !( curl_errno($handle)))
 	$validated_on = $result->validated_on;
     $gw_version = $result->gw_version;
     
-    //echo $status. " " . $tran_date . " " . $tran_id . " " .  $card_type;
+	//echo $status. " " . $tran_date . " " . $tran_id . " " .  $card_type;
 
 } else {
 
