@@ -1,5 +1,5 @@
 <?php
-include "r../resources/config.php";  
+include "../resources/config.php";  
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +67,7 @@ include "r../resources/config.php";
                 <div class="col-md-2"></div>
                 <div class="col-xs-12 col-sm-12 col-md-8">
                    <div class="add-book-form">
-                    <form action="add_books_process.php" method="post">
+                    <form action="add_books_process.php" method="post" enctype="multipart/form-data">
                        <div class="container">
                         <div class="row">
                           <div class="col-md-3">
@@ -85,19 +85,19 @@ include "r../resources/config.php";
                           </div>
                           <div class="col-md-9">
                             <input list="genre" name="genre">
-							  <datalist id="genre">
-							    <option value="Horror">
-							    <option value="Romance">
-							    <option value="Comedy">
-							    <option value="Thriller">
-							    <option value="Psychological">
-							    <option value="Non-Fiction">
-							    <option value="Historical">
-							    <option value="Poetry">
-							    <option value="Religion">
-							    <option value="Crime">
-							    <option value="Sports">
-							  </datalist>
+                                <datalist id="genre">
+                                  <option value="Horror">
+                                  <option value="Romance">
+                                  <option value="Comedy">
+                                  <option value="Thriller">
+                                  <option value="Psychological">
+                                  <option value="Non-Fiction">
+                                  <option value="Historical">
+                                  <option value="Poetry">
+                                  <option value="Religion">
+                                  <option value="Crime">
+                                  <option value="Sports">
+                                </datalist>
                           </div>
                           </div>
                        </div>
@@ -137,7 +137,7 @@ include "r../resources/config.php";
                             <label for="fname">Picture:</label>
                           </div>
                           <div class="col-md-9">
-                            <input type="file" id="book_picture" name="book_picture">
+                          <input type="file" name="image" />
                           </div>
                         </div>
                        </div>

@@ -1,5 +1,5 @@
 <?php
-  include "../reources/config.php";  
+  include "../resources/config.php";  
 ?>
 
 
@@ -64,9 +64,28 @@
 
 
 <?php
-    $sql = "SELECT id, book_image, book_title, genre_id, book_price, author, ISBN FROM addbook";
-    $result = mysqli_query($conn, $sql);
-    if (mysqli_num_rows($result) > 0) {
+
+      $username = $_SESSION['username']; //storing the username of currently logged in user in the variable $username
+
+      //Here, i am trying to match the username with the currently logged in user 
+      //Then i am asking for the user_id for that particular user so that i can store it as a foreign key in book table.
+      //This will help me to identify who is the owner of the book.
+      $query = "SELECT user_id FROM user WHERE username='$username'";
+      $result = mysqli_query($connection, $query);
+
+      if ($result->num_rows > 0) {
+      // output data of each row
+      while($row = $result->fetch_assoc()) {
+        $user_id =  $row['user_id']; //returns id
+      }
+      }
+
+      //selecting the currently logged in users books that s/he uploaded
+      $query = "SELECT * FROM book WHERE user_id = $user_id ";
+      $send_query = mysqli_query($connection, $query);
+
+      while($row = mysqli_fetch_array($send_query)){
+        
 ?>
 
 <section class="user-section">
@@ -92,9 +111,8 @@
         <th class="text-center pad"> Delete </th>
         </tr>
 
-        <?php while($row = mysqli_fetch_assoc($result))
-        {
-        ?>
+       
+      
         <tr>
 
         <td class="text-center pad"><?php echo $row["book_title"];?> </td>
@@ -102,13 +120,12 @@
         <td class="text-center pad"><?php echo $row["book_price"];?> </td>
         <td class="text-center pad"><?php echo $row["author"];?> </td>
         <td class="text-center pad"><?php echo $row["ISBN"];?> </td>
-        <td class="text-center pad"> <a href="deletebooks_process.php?id=<?php echo $row["id"]; ?>">Delete</a> </button></td>
+        <td class="text-center pad"> <a href="deletebooks_process.php?id=<?php echo $row["book_id"]; ?>">Delete</a> </button></td>
         </tr>
         <?php
-        }
-        }
-        else
-        echo "<center>No books found in your collection </center>" ;
+        
+      }
+     
         ?>
         </table>
     </div>

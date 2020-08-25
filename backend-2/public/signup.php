@@ -33,6 +33,18 @@
 			<input type="password" name="password_2">
 		</div>
 		<div class="input-group">
+			<label>City</label>
+			<input type="text" name="city" value="<?php echo $city; ?>">
+		</div>
+		<div class="input-group">
+			<label>Address</label>
+			<textarea name="address" value="<?php echo $address; ?>"></textarea>
+		</div>
+		<div class="input-group">
+			<label>Phone Number</label>
+			<input type="text" name="number" value="<?php echo $number; ?>">
+		</div>
+		<div class="input-group">
 			<button type="submit" name="register" class="btn">Register</button> 
 		</div>
 		<p>

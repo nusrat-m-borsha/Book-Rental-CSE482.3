@@ -11,6 +11,9 @@
 		$email = mysqli_real_escape_string($connection,$_POST['email']);
 		$password_1 = mysqli_real_escape_string($connection,$_POST['password_1']);
 		$password_2 = mysqli_real_escape_string($connection,$_POST['password_2']);
+		$city = mysqli_real_escape_string($connection,$_POST['city']);
+		$address = mysqli_real_escape_string($connection,$_POST['address']);
+		$number = mysqli_real_escape_string($connection,$_POST['number']);
 
 		//ensure that form fields are filled properly
 		if(empty($username)){

@@ -14,8 +14,8 @@
                           $send_query = mysqli_query($connection, $query);
 
                           while($row = mysqli_fetch_array($send_query)){
-                            
-                            echo "<img src=\"data:image/jpg;based64{$row['book_image']}\">";
+                          
+                            echo $row['book_image'];
                           
                         
                    echo "</div>";
