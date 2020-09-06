@@ -15,7 +15,7 @@
 
                           while($row = mysqli_fetch_array($send_query)){
                           
-                            echo $row['book_image'];
+                             echo '<img src="data:image;base64,'.base64_encode($row['book_image']).'" alt="Image">';
                           
                         
                    echo "</div>";

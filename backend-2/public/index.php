@@ -1,6 +1,6 @@
 
 <?php require_once("../resources/config.php"); 
-    include_once('header.php');
+	include_once('header.php');
 ?>
 
 
@@ -14,14 +14,46 @@
 	<!----------------------------------Search Container------------------------------->
 <div class="container">
   <div class="row">
+	  <form>
 		<div class="input-group mb-3">
-		  <input type="text" class="form-control" placeholder="Search">
+		<input type="text" name="search" id="search" autocomplete="off" placeholder="search book name here....">
 		  <div class="input-group-append">
-		    <button class="btn btn-success" type="submit">Search</button>
+			<button class="btn btn-success" type="submit">Search</button><br>
 		  </div>
-		</div>	
+		</div>
+       </form>
   </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+       $("#search").keyup(function(){
+          var query = $(this).val();
+          if (query != "") {
+            $.ajax({
+              url: 'ajax_search.php',
+              method: 'POST',
+              data: {query:query},
+              success: function(data){
+ 
+                $('#output').html(data);
+                $('#output').css('display', 'block');
+ 
+                $("#search").focusout(function(){
+                    $('#output').css('display', 'none');
+                });
+                $("#search").focusin(function(){
+                    $('#output').css('display', 'block');
+                });
+              }
+            });
+          } else {
+          $('#output').css('display', 'none');
+        }
+      });
+    });
+  </script>
+
 	<!----------------------------------Books------------------------------------------>
 
        
@@ -33,32 +65,9 @@
   <hr class="mt-2 mb-5">
 
   <div class="row text-center text-lg-left">
-
-  	<?php
-    $sql = "SELECT book_id, book_image, book_title, author, ISBN FROM book";
-    $result = mysqli_query($connection, $sql);
-    if (mysqli_num_rows($result) > 0) {
-	?>
-
-	<?php while($row = mysqli_fetch_assoc($result))
-        {
-        ?>
-
-
-	    <div class="col-lg-3 col-md-4 col-6">
-	      <?php echo "<a href='single_book.php?id={$row['book_id']}' class=\"d-block mb-4 h-100 text-center\">"; ?>
-	            <?php echo '<img src="data:image;base64,'.base64_encode($row['book_image']).'" alt="Image" style="width:200px; height:250px;">'; ?>
-	            <p class="text-center book-title"><strong><?php echo $row["book_title"];?> </strong></p>
-	          </a>
-	    </div>
-
-    <?php
-    }
-    }
-    else
-    echo "<center>No books found in your collection </center>" ;
+  <div id="output"></div>
+  <?php require_once("ajax_search.php"); 
     ?>
-    
 
   </div>
 

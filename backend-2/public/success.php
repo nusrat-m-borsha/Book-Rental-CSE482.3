@@ -1,4 +1,82 @@
-<?php
+<?php require_once("../resources/config.php"); 
+$_SESSION['status'] = $_GET['status'];
+
+if($_SESSION['status'] == 1){
+	//storing cart data into order table
+	$username = $_SESSION['username']; //storing the username of currently logged in user in the variable $username
+	$order_id="";
+
+	$query = "SELECT * FROM user WHERE username='$username'";
+	$result = mysqli_query($connection, $query);
+	
+	if ($result->num_rows > 0) {
+
+	while($row = $result->fetch_assoc()) {
+	  $user_id =  $row['user_id']; //returns id
+	}
+	}
+  
+	$paid = False;
+	$sql = "INSERT INTO orders (user_id, paid) VALUES ('$user_id', '$paid')";
+
+	if (mysqli_query($connection, $sql))
+	{
+	  echo "<br> New record created successfully";
+	}
+	else
+	{
+	  echo "Error: " . $sql . "<br>" . mysqli_error($connection);
+	}
+  
+
+	//searching for the order_id of the current order
+	$query = "SELECT * FROM orders WHERE user_id='$user_id'";
+	$result = mysqli_query($connection, $query);
+	
+	if ($result->num_rows > 0) {
+
+	while($row = $result->fetch_assoc()) {
+	  $order_id =  $row['order_id']; //returns id
+	}
+	}
+
+	//$query = "SELECT order_id FROM order_books WHERE order_id='$order_id'";
+   // $result = mysqli_query($connection, $query);
+
+	//storing book items in cart for the current user in  order_products table
+	foreach($_SESSION['cart_data'] as $keys => $values){
+		//searching for the book_id of the book_name in books table
+	   // so that i can store the book_id as fk in order_books table along with the order_id
+	   $book_name = $values['book_name'];
+	   $query = "SELECT * FROM book WHERE book_title='$book_name'";
+	   $result = mysqli_query($connection, $query);
+	   
+	   if ($result->num_rows > 0) {
+
+	   while($row = $result->fetch_assoc()) {
+	   $book_id =  $row['book_id']; //returns id
+
+	   $sqli = "INSERT INTO order_books (order_id, book_id) VALUES ('$order_id', '$book_id')";
+
+	   if (mysqli_query($connection, $sqli))
+	   {
+		 echo "<br> New record created successfully :D";
+	   }
+	   else
+	   {
+		 echo "Error: ---- " . $sqli . "<br>" . mysqli_error($connection);
+	   }
+	 
+	   }
+	   }
+	}
+      
+		setcookie($_SESSION['username'], '', 1); 
+		$_SESSION['total_amount'] =0;
+
+}
+
+
  include_once('header.php');
 $val_id=urlencode($_POST['val_id']);
 $store_id=urlencode("bookr5f41517d60625");
