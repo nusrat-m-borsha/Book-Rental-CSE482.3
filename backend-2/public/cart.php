@@ -17,13 +17,7 @@ if(!isset($_SESSION['username'])){
        <!----------------------------------Item Info Table----------------------------------->
        <div class="row">
         <div class="col-xl-12 col-md-12 col-sm-12">
-        <?php
-                     if(!isset($_GET['add'])){
-                         echo "Nothing to show here";
-                     }
-                     
-            else{
-                ?>
+       
         <table class="payment-info-table">
         <tr>
                         <th>Item</th>
@@ -126,7 +120,7 @@ if(!isset($_SESSION['username'])){
 
             $_SESSION['cart_data'] = $cart_data;
             $_SESSION['cookie'] = $cart_data;
-            $_SESSION['total_amount'] = $total;
+            $_SESSION['total'] = $total;
        }
        } ?>
            
@@ -138,8 +132,12 @@ if(!isset($_SESSION['username'])){
                 <td colspan="3">Total</td>
                 <td>
                 <?php
-                        $_SESSION['total_amount'] += 50; 
-                      echo $_SESSION['total_amount'] ;
+                      if($_SESSION['total']==0){
+                          echo $_SESSION['total'];
+                      }else{
+                        $_SESSION['total'] += 50; 
+                      echo $_SESSION['total'] ;
+                      }
                      ?>
                 </td>
             </tr>
@@ -154,8 +152,8 @@ if(!isset($_SESSION['username'])){
             <a class="btn btn-default" href="#" role="button">Cash On Delivery</a>
           </div>
           <div class="bkash-button">
-            <a class="btn btn-default" href="checkout.php?price=<?php echo $total ?>" role="button">Checkout</a>
+            <a class="btn btn-default" href="checkout.php?price=<?php echo $_SESSION['total'] ?>" role="button">Checkout</a>
           </div>
     </section>
-<?php }?>
+
 <?php include_once('footer.php');?>

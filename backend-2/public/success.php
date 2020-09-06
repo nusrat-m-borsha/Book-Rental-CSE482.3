@@ -72,7 +72,8 @@ if($_SESSION['status'] == 1){
 	}
       
 		setcookie($_SESSION['username'], '', 1); 
-		$_SESSION['total_amount'] =0;
+		$_SESSION['total'] = 0;
+		$_SESSION['status'] = 0;
 
 }
 
