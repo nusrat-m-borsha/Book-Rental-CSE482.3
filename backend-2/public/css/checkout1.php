@@ -1,11 +1,12 @@
-<?php require_once("../resources/config.php"); 
+<?php require_once("../resources/config.php"); ?>
+<?php
 $post_data = array();
 $post_data['store_id'] = "bookr5f41517d60625";
 $post_data['store_passwd'] = "bookr5f41517d60625@ssl";
 $post_data['total_amount'] = $_GET["price"];
 $post_data['currency'] = "BDT";
 $post_data['tran_id'] = "SSLCZ_TEST_".uniqid();
-$post_data['success_url'] = "http://localhost/book_rental/public/success.php?status=1";
+$post_data['success_url'] = "http://bookrental482.freecluster.eu/public/success.php";
 $post_data['fail_url'] = "http://localhost/new_sslcz_gw/fail.php";
 $post_data['cancel_url'] = "http://localhost/new_sslcz_gw/cancel.php";
 # $post_data['multi_card_name'] = "mastercard,visacard,amexcard";  # DISABLE TO DISPLAY ALL AVAILABLE

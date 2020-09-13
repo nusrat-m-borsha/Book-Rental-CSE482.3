@@ -1,6 +1,7 @@
 <?php require_once("../resources/config.php"); 
       include_once('signin_process.php');
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +23,7 @@
         <nav class="navbar navbar-expand-sm">
             <!-- Brand/logo -->
             <div class="nav-logo">
-            <a class="navbar-brand" href="#">Book Rental</a>
+            <a class="navbar-brand" href="index.php">Book Rental</a>
            </div>
             <!-- Links -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -32,11 +33,14 @@
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav ml-auto">
               <?php if(isset($_SESSION['username'])){ ?>
+                      <li class="nav-item">
+                          <a class="nav-link" href="index.php">Home</a>
+                        </li>
                         <li class="nav-item">
                           <a class="nav-link" href="book_genre_list.php">Browse Books</a>
                         </li>
                       <li class="nav-item">
-                         <a class="nav-link" href="#">Welcome, <?php echo $_SESSION['username'] ?></a>
+                         <a class="nav-link" href="user.php">Welcome, <?php echo $_SESSION['username'] ?></a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href='signin_process.php?logout' >Logout</a>

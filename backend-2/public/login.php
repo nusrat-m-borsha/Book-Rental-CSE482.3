@@ -2,35 +2,62 @@
       include_once('header.php');
       include_once('signin_process.php');
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Login</title>
-	<link rel="stylesheet" type="text/css" href="css/style2.css">
-</head>
-<body>
-<div class="header">
-		<h2>Login</h2>
-	</div>
 
-	<form method="post" action="login.php">
-		<!-- display validation errors here -->
-		<?php include('errors.php'); ?>
-		<div class="input-group">
-			<label>Username</label>
-			<input type="text" name="username">
-		</div>
-		<div class="input-group">
-			<label>Password</label>
-			<input type="password" name="password">
-		</div>
-		<div class="input-group">
-			<button type="submit" name="login" class="btn">Login</button> 
-		</div>
-		<p>
-			Not yet a member? <a href="signup.php">Sign Up</a>
-		</p>
-	</form>
+
+<section class="user-section">
+        <!----------------------------------Page Heading----------------------------------->
+      <div class="container">  
+        <div class="row">
+          <div class="col-md-1"></div>
+            <div class="col-sm-10 col-lg-10 col-md-10">
+               <div class="user-heading">
+                 <h2>Login</h2>
+               </div>
+              <div class="col-md-1"></div>
+            </div>
+        </div>
+      </div>
+       
+  </section>
+
+
+
+<div class="col-xs-8 col-sm-8 col-md-5 offset-md-3 mx-auto gap">
+                    <span class="anchor" id="add_books"></span>
+
+                    <!-- form card register -->
+                    <div class="card card-outline-secondary">
+                        <div class="card-body">
+                            <form class="form" role="form" action="login.php" method="post" enctype="multipart/form-data">
+                            	<?php include('errors.php'); ?>
+                                <div class="form-group">
+                                    <label for="inputName">Username</label>
+                                    <input type="text" class="form-control" name="username">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="inputName">Password</label>
+                                    <input class="form-control" type="password" name="password">
+                                </div>
+                                
+                                <div class="form-group text-center">
+                                    <button type="submit" name="login" value="Login" class="btn btn-success btn-lg">Login</button>
+                                </div>
+                                <p>
+									Not yet a member? <a href="signup.php">Sign Up</a>
+								</p>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /form card register -->
+
+                </div>
+
+                <div class="gap"></div>
+
+
+        
+  <?php include_once('footer.php');?>
 
 </body>
 </html>

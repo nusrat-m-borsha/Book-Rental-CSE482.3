@@ -1,7 +1,5 @@
 <?php
-/**
- * this bage  coded  by Ahmed  Embaby in  24  SEP  2019
- */
+
 
 class Image
 {

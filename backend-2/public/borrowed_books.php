@@ -2,10 +2,8 @@
     include_once('header.php');
 ?>
 
-
-
      <!----------------------------------Book Collection----------------------------------->
- 
+
 <section class="user-section">
         <!----------------------------------Page Heading----------------------------------->
       <div class="container">  
@@ -13,7 +11,7 @@
           <div class="col-md-1"></div>
             <div class="col-sm-10 col-lg-10 col-md-10">
                <div class="user-heading">
-                 <h2>Your Book Collection</h2>
+                 <h2>Your Borrowed Books</h2>
                </div>
               <div class="col-md-1"></div>
             </div>
@@ -23,7 +21,7 @@
   </section>
 
       <div class="container text-center">
-        <table border="2" align="center" class="table1 col-xs-10 col-sm-10 col-md-8">
+        <table border="2" align="center" class="table1 col-xs-10 col-sm-10 col-md-8"">
 
 
         <tr>
@@ -37,10 +35,12 @@
         </tr>
 
        <?php
-
-             $user_id = get_user_id_session($_SESSION['username']);
-    
-            $send_query = get_book_collection($user_id);
+       
+     
+      $user_id = get_user_id_session($_SESSION['username']);
+      $book_ids = get_user_orders(($user_id));
+      foreach($book_ids as $book_id){
+      $send_query=book_query($book_id);
 
       while($row = mysqli_fetch_array($send_query)){    
 ?>
@@ -56,7 +56,8 @@
         </tr>
         <?php
         
-      }
+      } 
+    }
      
         ?>
         </table>
@@ -65,14 +66,7 @@
 <div class="gap"></div>
 
 
-    
-
-
      <!----------------------------------Footer----------------------------------->
         
         
   <?php include_once('footer.php');?>
-
-
-</body>
-</html>

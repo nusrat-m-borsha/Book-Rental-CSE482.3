@@ -1,117 +1,146 @@
 <?php
 include "../resources/config.php";  
+include_once('header.php');
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="style1.css">
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <title>Book Rental</title>
-</head>
-<body>
-     <!----------------------------------Navbar----------------------------------->
-     <header>
-        <nav class="navbar navbar-expand-sm">
-            <!-- Brand/logo -->
-            <div class="nav-logo">
-            <a class="navbar-brand" href="homepage.html">Book Rental</a>
-            </div>
-            <!-- Links -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-              <span class="navbar-toggler-icon"><i class="fa fa-bars"></i>
-              </span>
-            </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="book_genre_list.html">Browse Books</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="signup.html">Sign up</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="login.html">Login</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="payment.html">My Cart</a>
-              </li>
-            </ul>
-            </div>
-        </nav>
-    </header>
 
 
     <section class="user-section">
         <!----------------------------------Page Heading----------------------------------->
+      <div class="container">  
         <div class="row">
-            <div class="col-sm-12 col-xl-12 col-lg-12 col-md-12">
+          <div class="col-md-1"></div>
+            <div class="col-sm-10 col-lg-10 col-md-10">
                <div class="user-heading">
-                 <h1>User Profile</h1>
+                 <h2>User Profile</h2>
                </div>
+              <div class="col-md-1"></div>
             </div>
         </div>
-       <!----------------------------------Homepage Button and User Options----------------------------------->
-
-       <div class="row text-center">
-            <div class="col-md-12 form-group">
-              <button class="btn home-button" type="submit">Go back to homepage</button>
-            </div>
       </div>
-
-
-
-        <div class="col-xl-12 col-md-12 col-sm-12 col-lg-12">
-        <table class="dashboard-table">
-            <tr>
-                <th><h5><a href="add_books.php">Add Books</a></h5></th>
-            </tr>
-            <tr>
-                <th><h5><a href="bookcollection.php">My Book Collection</a></h5></th>
-            </tr>
-            <tr>
-                <th><h5><a href="profile.php">My Profile</a></h5></th>
-            </tr>
-            <tr>
-                <th><h5><a href="">Books Borrowed</a></h5></th>
-            </tr>
-        </table>
-    </div>
+       <!----------------------------------Homepage Button and User Options----------------------------------->
   </section>
+
+<?php
+
+      $username = $_SESSION['username']; //storing the username of currently logged in user in the variable $username
+
+      //Here, i am trying to match the username with the currently logged in user 
+      //Then i am asking for the user_id for that particular user so that i can store it as a foreign key in book table.
+      //This will help me to identify who is the owner of the book.
+      $query = "SELECT user_id FROM user WHERE username='$username'";
+      $result = mysqli_query($connection, $query);
+
+      if ($result->num_rows > 0) {
+      // output data of each row
+      while($row = $result->fetch_assoc()) {
+        $user_id =  $row['user_id']; //returns id
+      }
+      }
+?>
+
+<?php 
+        $query = "SELECT * FROM  user WHERE username ='$username' ";
+        $send_query = mysqli_query($connection, $query);
+        while($row = mysqli_fetch_array($send_query)){
+  ?>
+
+
+
+
+<div class="main-body">
+  <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+                   <?php echo '<img src="data:image;base64,'.base64_encode($row['profile_image']).'" alt="Image" class="rounded-circle" width="200" height="200">'; ?>-->
+                    <div class="mt-3">
+                      <h4><?php echo $row["full_name"];?></h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+            <div class="card2">
+                <div class="card-header2">
+                    <h5 class="card-title mb-0">Options</h5>
+                </div>
+
+                <div class="list-group list-group-flush" role="tablist">
+                    <a class="list-group-item list-group-item-action active"  href="user.php" role="tab">
+                      Your Profile
+                    </a>
+
+                    <a class="list-group-item list-group-item-action"  href="add_books.php">
+                      Add Books
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="book_collection.php">
+                      My Book Collection
+                    </a>
+                    <a class="list-group-item list-group-item-action"  href="profile.php" role="tab">
+                      Edit Profile
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="borrowed_books.php" role="tab">
+                      Books Borrowed
+                    </a>
+                    
+                </div>
+            </div>
+          </div>
+
+
+            <div class="col-md-8">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Username</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <?php echo $row["username"];?>
+                    </div>
+                  </div>
+                  <hr class="">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <?php echo $row["email"];?>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Phone</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <?php echo $row["number"];?>
+                    </div>
+                  </div>
+                  <hr>
+                  
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Address</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <?php echo $row["address"]; 
+                    } ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+</div>
+</div>
+</div>
+
      <!----------------------------------Footer----------------------------------->
         
-<footer class="panel-footer-2 text-center gap">
-    <div class="container">
-      <div class="row">
-        <section id="hours" class="col-xs-12 col-sm-12 col-md-4">
-          <span>Hours:</span><br>
-          <p>Sun-Thurs: 10:00am - 6.00pm</p>
-          <p>Dhaka, Bangladesh</p>
-          <hr class="visible-xs">
-        </section>
-        <section id="address" class="col-xs-12 col-sm-12 col-md-4">
-          <span>Contact:</span><br>
-          <p>Email: bookrentalsystem@gmail.com</p>
-          <p>Phone: +88 01711 111 111</p>
-          <hr class="visible-xs">
-        </section>
-        <section id="social" class="col-xs-12 col-sm-12 col-md-4">
-          <span>Social Media: </span><br> 
-          <a href="" class="fa fa-facebook"></a>
-          <a href="#" class="fa fa-instagram"></a>
-        </section>
-      </div>
-      <div class="text-center">&copy; Book Rental System 2020</div>
-    </div>
-  </footer>
+        
+  <?php include_once('footer.php');?>
 
 
 </body>

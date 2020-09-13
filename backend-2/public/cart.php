@@ -17,7 +17,6 @@ if(!isset($_SESSION['username'])){
        <!----------------------------------Item Info Table----------------------------------->
        <div class="row">
         <div class="col-xl-12 col-md-12 col-sm-12">
-       
         <table class="payment-info-table">
         <tr>
                         <th>Item</th>
@@ -28,53 +27,7 @@ if(!isset($_SESSION['username'])){
            <?php
  
                 if(isset($_GET['add'])){
-                    {
-                       if(isset($_COOKIE[$_SESSION['username']]))
-                        {
-                         $cookie_data = stripslashes($_COOKIE[$_SESSION['username']]);
-                       
-                         $cart_data = json_decode($cookie_data, true);
-                        }
-                        else
-                        {
-                         $cart_data = array();
-                        }
-                       
-                        $book_id_list = array_column($cart_data, 'book_id');
-                       
-                        if(in_array($_GET["add"], $book_id_list))
-                        {
-                         foreach($cart_data as $keys => $values)
-                         {
-                          if($cart_data[$keys]["book_id"] == $_GET["add"])
-                          {
-                            echo "item already added";
-                          }
-                         }
-                        }
-                        else
-                        {
-                       
-                            $query = "SELECT * FROM book WHERE book_id=". escape_string($_GET["add"]) ." ";
-                            $send_query = mysqli_query($connection, $query);
-
-                            while($row = mysqli_fetch_array($send_query)){
-
-                                $book_array = array(
-                                    'book_id'   => $row['book_id'],
-                                    'book_name'   => $row['book_title'],
-                                    'book_price'  => $row['book_price'],
-                                    
-                                );
-                                $cart_data[] = $book_array;
-                            }
-                    $book_data = json_encode($cart_data);
-    
-                    setcookie($_SESSION['username'], $book_data, time() + (86400 * 30));
-                    header("location:cart.php?success=1");
-                  
-                    
-                }}
+                    add_to_cart($_GET['add']);
             }
     
                

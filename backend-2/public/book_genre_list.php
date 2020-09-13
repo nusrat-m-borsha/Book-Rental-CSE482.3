@@ -1,26 +1,29 @@
 <?php require_once("../resources/config.php"); 
     include_once('header.php');
 ?>
-    <br><br><br>
-      <!----------------------------------Genre Heading----------------------------------->
-      <section>
-          <div class="container">
-              <div class="row">
-                 <div class="col-md-1"></div>
-                 <div class="col-xs-12 col-sm-12 col-md-10">
-                     <h4 class="genre-heading-font">Genre</h4>
-                 </div>
-                 <div class="col-md-1"></div>
-              </div>
-          </div>
-      </section>
+       <!----------------------------------Genre Heading----------------------------------->
+       <section class="user-section">
+      <div class="container">  
+        <div class="row">
+          <div class="col-md-1"></div>
+            <div class="col-sm-10 col-lg-10 col-md-10">
+               <div class="user-heading">
+                 <h2>Genres</h2>
+               </div>
+              <div class="col-md-1"></div>
+            </div>
+        </div>
+      </div>
+       <!----------------------------------Homepage Button and User Options----------------------------------->
+  </section>
+
 
       <!----------------------------------Genre List Table----------------------------------->
       <section>
         <div class="container">
             <div class="row">
-               <div class="col-md-1"></div>
-               <div class="col-xs-12 col-sm-12 col-md-10">
+               <div class="col-md-2"></div>
+               <div class="col-xs-12 col-sm-12 col-md-8">
                   <div class="genre-list-table">
                       <table>
 
@@ -36,7 +39,7 @@
                       </table>
                   </div>
                </div>
-               <div class="col-md-1"></div>
+               <div class="col-md-2"></div>
             </div>
         </div>
     </section>
